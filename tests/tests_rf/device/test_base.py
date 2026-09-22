@@ -84,7 +84,7 @@ class TestDeviceBase:
         dev = DeviceBase(mock_gateway, Address("34:123456"))
 
         assert dev.last_seen is None
-        assert dev.last_command is None
+        assert dev.last_msg is None
         assert dev.consecutive_missed_polls == 0
 
         seen_dtm = dt.now(UTC)
@@ -95,7 +95,7 @@ class TestDeviceBase:
         assert dev.last_seen == seen_dtm
         # == not is: `is` is provably-false for mypy after the earlier
         # `is None` assert narrows the member (unreachable error)
-        assert dev.last_command == msg
+        assert dev.last_msg == msg
         assert dev.consecutive_missed_polls == 2
 
     def test_rssi_per_hgi_single_transport(

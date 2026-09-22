@@ -178,7 +178,7 @@ class DeviceBase(Entity):
         return self._last_msg_dtm
 
     @property
-    def last_command(self) -> Message | None:
+    def last_msg(self) -> Message | None:
         """Return the last message sent by this device.
 
         Only messages with this device as the source count; messages
